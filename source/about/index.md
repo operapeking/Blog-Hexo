@@ -1,5 +1,5 @@
 ---
-title: about
+title: 关于
 date: 2022-05-23 09:50:17
 mathjax: true
 ---

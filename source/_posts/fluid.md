@@ -1,6 +1,9 @@
 ---
 title: Fluid 主题
 date: 2022-05-23 11:17:18
+categories: 技术
+tags:
+  - 博客
 ---
 ```markdown
 {% note success %}

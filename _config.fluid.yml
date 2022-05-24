@@ -885,7 +885,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/theme/category.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -914,7 +914,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/theme/tag.jpg
   banner_img_height: 80
   banner_mask_alpha: 0.3
   tagcloud:
@@ -931,7 +931,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/theme/about.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/avatar.png

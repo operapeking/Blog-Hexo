@@ -200,7 +200,7 @@ $x_1 + x_2 + x_3 + \dots + x_n = m$
 
 ### 二项式定理
 
-$(x+y)^n = \sum_{k = 0}^{n}{{C_n^{k}\times x^k} \times y^{n - k}}$
+$(x+y)^{n} = \sum_{k=0}^{n}{C_n^{k}\times x^{k} \times y^{n - k}}$
 
 - **证明**：展开使用组合数分析。
 

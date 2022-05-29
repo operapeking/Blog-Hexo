@@ -8,6 +8,7 @@ author: Mike
 ---
 包含初等数论、组合数学、线性代数知识点。
 <!-- more -->
+
 ## 初等数论
 
 ### 同余式
@@ -20,7 +21,9 @@ author: Mike
 
 欧拉函数：
 
-- **概念**
+- **概念**：
+$\phi(n)$ 表示 $n$ 以内与 $n$ 互质的数的个数。
+- **公式**：$\phi(N) = N\times\prod_{Prime\ p | N}{(1 - \frac{1}{p})}$
 - **求法**：线性筛
 
 ```cpp
@@ -40,19 +43,19 @@ for (int i = 2; i <= n; i++)
 
 欧拉定理：
 
-- **证明** （简单剩余系）
+- **证明**： 简单剩余系
 
-- **推论**
- $a ^ {b} \equiv a ^{b \mod \phi(n)}\pmod n$
-
-例题：
-给定一个整数 $N$，请你求出 $\sum_{1 \le i \le N}gcd(1, i)$的值。
+- **推论**：
+  - $a ^ {b} \equiv a ^{b \mod \phi(n)}\pmod n$
+  - 使得 $a^x\equiv 1\pmod n$ 的最小正整数解 $x$ 必定满足 $x|\phi(n)$ 。
 
 ### 费马小定理
 
 $a^{p - 1} \equiv 1\pmod p$，当 p 为素数时成立。
 
-欧拉定理的特殊情况。
+费马小定理是 $p$ 为素数的必要条件。
+
+**证明**：欧拉定理的特殊情况。
 
 应用：
 
@@ -61,21 +64,19 @@ $a^{p - 1} \equiv 1\pmod p$，当 p 为素数时成立。
 
 ### 威尔逊定理
 
-- **证明**
-
+- **证明**：逆元配对
 - **应用**
 
 例题：
-
-给出素数 p，求 $q!\mod p$，其中 $q$ 为比 p 小的最大素数，$p \in [1, 10^9]$。
+给出素数 $p$，求 $q!\mod p$，其中 $q$ 为比 p 小的最大素数，$p \in [1, 10^9]$。
 
 ### 裴蜀定理
 
 一定 $\exists x, y\in Z\ \ s.t.\  a \times x + b \times y = gcd(a, b)$ 成立。
 
 - **证明**
-
-两种证明方法。
+  - 数学归纳法
+  - 完全剩余系
 
 - **推论**
   - $a,b$ 互质的充分必要条件是存在整数 $x,y$ 使 $a \times x + b \times y=1$
@@ -109,14 +110,13 @@ $a^{p - 1} \equiv 1\pmod p$，当 p 为素数时成立。
 - **求法：**
   - 扩欧算法
   - 费马小定理（注意：仅在 p 为质数时成立）
-  - 线性递推:
-    - 证明
+  - 线性递推（证明）：
 
-```cpp
-inv[1] = fac[1] = inv[0] = fac[0] = 1;
-for (int i = 2; i <= n; i++)
-    inv[i] = (p - p / i) * inv[p % i] % p;
-```
+    ```cpp
+    inv[1] = fac[1] = inv[0] = fac[0] = 1;
+    for (int i = 2; i <= n; i++)
+        inv[i] = (p - p / i) * inv[p % i] % p;
+    ```
 
 ### 扩展欧几里得算法
 
@@ -132,7 +132,7 @@ gcd(a,b)})$；
 它的通解为 $(x'+ k \times \frac{b}{gcd(a, b)}, y^{'} - k \times \frac{a}{gcd(a, b)})$ 。
 
 ```cpp
-void exgcd(int a, int b, int &x, int &y)
+void exgcd(int a, int b, int &x, int &y) 
 {
    if (b == 0)
        return void(x = 1), void(y = 0);
@@ -142,9 +142,9 @@ void exgcd(int a, int b, int &x, int &y)
 }
 ```
 
-### CRT 中国剩余定理
+### 中国剩余定理（CRT）
 
-假设整数 $m_1, m_2\dots m_n$ 两两互素，则对于任意的整数 $a_1, a_2 \dots a_n$ ，方程组
+假设整数 $m_1, m_2\dots m_n$ 两两互素，则对于任意的整数 $a_1, a_2 \dots a_n$ ，方程组：
 
 $$\begin{cases} x \equiv a_1\ ({\rm mod}\ m_1) \\ x\equiv a_2\ ({\rm mod}\ m_2) \\ ... \\ x \equiv a_n\ ({\rm mod}\ m_n)\end{cases}$$
 存在整数解。
@@ -153,7 +153,7 @@ $$\begin{cases} x \equiv a_1\ ({\rm mod}\ m_1) \\ x\equiv a_2\ ({\rm mod}\ m_2) 
 
 可以构造出一个解 $x=\sum_{i=1}^{k}a_iM_it_i$
 
-- **证明** 展开即可。
+- **证明**： 展开即可。
 
 ```cpp
 int a[], m[], M[];
@@ -161,10 +161,11 @@ int CRT()
 {
     int MUL = 1, TJ = 0;
     for (int i = 1; i <= n; i++)
-        MUL *= m[i], M[i] = MUL / m[i];
+        MUL *= m[i];
     for (int i = 1; i <= n; i++)
     {
         int x, y;
+        M[i] = MUL / m[i];
         exgcd(M[i], m[i], x, y);
         if (x < 0) x += m[i];
         TJ += x * M[i] * a[i];
@@ -177,16 +178,15 @@ int CRT()
 
 ### 可重集排列和可重集组合
 
-![可重集](https://cdn.luogu.com.cn/upload/image_hosting/w9gkg3ok.png)
-
 #### 多重集的排列数
+
+设 $S = \{n_1\times a_1, n_\times a_2,\dots n_k\times a_k\}$ 是由$n_1$个$a_1$，$n_2$个$a_2\dots n_k$个$a_k$组成的可重集。
+
+那么 $S$ 的全排列个数为 $\frac{n!}{n_1!\times n_2!\dots \times n_k!}$
 
 #### 多重集的组合数
 
 从 $n$ 个元素中选取 $m$ 个元素，同一元素允许重复选取，产生的组合数量为 $C_{n + m - 1}^{m - 1}$。
-
-可重集排列：（多组组合）
-将 $n$ 个元素分成 $k$ 组，产生的组合个数为
 
 可重集组合： (不定方程的非负整数解)
 $x_1 + x_2 + x_3 + \dots + x_n = m$
@@ -198,24 +198,21 @@ $x_1 + x_2 + x_3 + \dots + x_n = m$
 
 ![GeChao](https://cdn.luogu.com.cn/upload/image_hosting/w05insir.png)
 
-- **证明**
-
 ### 二项式定理
 
-- **证明**
+$(x+y)^n = \sum_{k = 0}^{n}{{C_n^{k}\times x^k} \times y^{n - k}}$
+
+- **证明**：展开使用组合数分析。
 
 ### 容斥原理
-
-- **理解**
 
 - 并集形式
   $|A_1 \cup A_2 \cup A_3 \dots \cup A_n| = \sum_{1\le i\le n}{|A_i|}-\sum_{1\le i < j \le n} {|A_i \cap A_j|} + \dots + (-1)^{n + 1} \times |A_1 \cap A_2 \dots A_n |$
 
 - 交集形式（筛法公式）
-  ![demogen](https://www.zhihu.com/equation?tex=%7C%5Ccap_%7Bi%3D1%7D%5En+%5Coverline%7BA_i%7D%7C%3D%7C%5Coverline%7B%5Ccup_%7Bi%3D1%7D%5En+A_i%7D%7C%3D%7CS%7C-%7C%5Ccup_%7Bi%3D1%7D%5En+A_i%7C+%5C%5C%3D%7CS%7C-%5Csum+%7CA_i%7C%2B%5Csum+%7CA_i%5Ccap+A_j%7C-%5Cldots+%2B%28-1%29%5En+%7C%5Ccap_%7Bi%3D1%7D%5En+A_i%7C+)
+  $|\complement_{S}{A_1}\cup \complement_{S}{A_2} \dots \complement_{S}{A_n}| = |S| - \sum_{1\le i\le n}{|A_i|} + \sum_{1\le i < j \le n} {|A_i \cap A_j|} - \dots + (-1)^{n}\times |A_1 \cap A_2 \dots A_n |$
 
-例题：
-[Devu and flowers](https://www.luogu.com.cn/problem/CF451E)
+- 从筛法公式理解错排公式
 
 ### 卡特兰数
 
@@ -224,25 +221,21 @@ $x_1 + x_2 + x_3 + \dots + x_n = m$
 长度为 $n$ 的 $0, 1$ 序列，满足任意前缀中 $0$ 的个数不小于 $1$ 的个数的排列个数为 $Cat_n = \frac{C_n^{2n}}{n + 1}$
 
 - **例子**
-  - 欧拉剖分
   - 括号匹配
   - 出栈统计
-
-例题：
-[球迷购票问题](https://www.luogu.com.cn/problem/P1754)
+  - 欧拉剖分
 
 ### 组合杂项
 
 - 组合数的线性预处理
 
 ```cpp
-int C(int x, int y)
-{
+LL C(int x, int y) {
     return fac[x] * inv[x - y] % mod * inv[y] % mod;
 }
 void init()
 {
-	inv[0] = fac[0] = inv[1] = fac[1] = 1;
+    inv[0] = inv[1] = fac[0] = fac[1] = 1;
     for (int i = 2; i < N; i++)
     {
         inv[i] = (mod - mod / i) * inv[i] * inv[mod % i] % mod;
@@ -255,7 +248,6 @@ void init()
 ```
 
 - 杨辉三角与组合数
-![YangHui](https://tse1-mm.cn.bing.net/th/id/R-C.5fcbc7793b20a34c4f5e67f2a156e94f?rik=Q9RaZG75okd2Gg&riu=http%3a%2f%2fwww.rcydt.cn%2fuploadfile%2f2019%2f0430%2f20190430040517860.jpg&ehk=b7E7L1oc9Yz7rP4cbDrDnOawD%2bnRXqSPYETVZ6GV0dA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1)
 - 组合数的性质
   - $\frac{i}{n}C_n^i = C_{n - 1}^{i - 1}$
   - $C_{n+1}^m=C_n^m+C_n^{m-1}$
@@ -269,30 +261,27 @@ void init()
 
 ### 矩阵概念
 
-![JuZhen](https://cdn.luogu.com.cn/upload/image_hosting/6aq90t58.png)
+**$X$ 阶矩阵**：行数与列数都等于 $n$ 的矩阵称为 $n$ 阶矩阵或 $n$ 阶方阵。
 
-**$X$ 阶矩阵：** 行数与列数都等于 $n$ 的矩阵称为 $n$ 阶矩阵或 $n$ 阶方阵。
-**单位矩阵：** 主对角线上的元素都为 $1$ ，其余元素均为 $0$ 的 $n$ 阶方阵称为 $n$ 阶单位矩阵，记为 $E$。
-**逆矩阵：** 设 $A$ 是一个 $n$ 阶矩阵，若存在另一个 $n$ 阶矩阵 $B$ ，使得： $A \times B = E$
-**矩阵的迹：**
-$n \times n$ 矩阵 $A$ 的对角元素之和称为矩阵A的迹( $trace$ ),记作 $tr(A)$
+**单位矩阵**：主对角线上的元素都为 $1$ ，其余元素均为 $0$ 的 $n$ 阶方阵称为 $n$ 阶单位矩阵，记为 $E$。
+
+**逆矩阵**：设 $A$ 是一个 $n$ 阶矩阵，若存在另一个 $n$ 阶矩阵 $B$ ，使得： $A \times B = E$
+
+**矩阵的迹**：$n \times n$ 矩阵 $A$ 的对角元素之和称为矩阵A的迹( $trace$ ),记作 $tr(A)$
 
 ### 特殊矩阵
 
 - **稀疏矩阵**
-我们知道矩阵是一个由 $m$ 行和 $n$ 列组成的二维数据对象，因此一共有 $m \times n$ 个数值。当这个矩阵的绝大部分数值为零，且非零元素呈不规律分布时，则称该矩阵为稀疏矩阵（ $Sparse\ Matrix$ ）
+当一个矩阵的绝大部分数值为零，且非零元素呈不规律分布时，则称该矩阵为稀疏矩阵（ $Sparse\ Matrix$ ）
 与它相对的一个概念叫稠密矩阵，，那些非零数值占大多数元素的矩阵即是稠密矩阵（ $Dense\ Matrix$ ）。
 
 - **三角矩阵**
 三角矩阵（ $Triangular\ Matrix$ ）分为上三角矩阵和下三角矩阵。
-  - 上三角矩阵（ $Upper\ Triangular\ Matrix$ ）是指主对角线以下元素全为0的矩阵，如：
-![Up](https://www.zhihu.com/equation?tex=%5Cbegin%7Bpmatrix%7D+1+%26+3+%5C%5C+0+%26+2+%5C%5C+%5Cend%7Bpmatrix%7D+%2C+%5Cquad+%5Cbegin%7Bpmatrix%7D+2+%26+4+%26+5+%5C%5C+0+%26+6+%26+0+%5C%5C+0+%26+0+%263+%5Cend%7Bpmatrix%7D)
-  - 下三角矩阵（Lower Triangular Matrix）是指主对角线以上元素全为0的矩阵，如：
-![Down](https://www.zhihu.com/equation?tex=%5Cbegin%7Bpmatrix%7D+1+%26+0+%5C%5C+4+%26+2+%5C%5C+%5Cend%7Bpmatrix%7D+%2C+%5Cquad+%5Cbegin%7Bpmatrix%7D+2+%26+0+%26+0+%5C%5C+0+%26+0+%26+0+%5C%5C+4+%26+6+%263+%5Cend%7Bpmatrix%7D)
+  - 上三角矩阵（ $Upper\ Triangular\ Matrix$ ）是指主对角线以下元素全为0的矩阵。
+  - 下三角矩阵（Lower Triangular Matrix）是指主对角线以上元素全为0的矩阵。
 
 - **对称矩阵**
-对称矩阵（Symmetric Matrix）是指元素以主对角线为对称轴对应相等的矩阵，例如：
-![DuiCheng](https://www.zhihu.com/equation?tex=%5Cbegin%7Bpmatrix%7D+1+%26+3+%5C%5C+3+%26+2+%5C%5C+%5Cend%7Bpmatrix%7D+%2C+%5Cquad+%5Cbegin%7Bpmatrix%7D+2+%26+5+%26+6+%5C%5C+5+%26+0+%26+7+%5C%5C+6+%26+7+%263+%5Cend%7Bpmatrix%7D)
+对称矩阵（Symmetric Matrix）是指元素以主对角线为对称轴对应相等的矩阵。
 
 ### 矩阵的初等变换
 
@@ -305,27 +294,51 @@ $n \times n$ 矩阵 $A$ 的对角元素之和称为矩阵A的迹( $trace$ ),记�
 矩阵的加减乘
 
 - 加减法：对应的位置相加减
-
 - 数乘：每个位置乘以常数
-
 - 矩阵的转置运算
-  ![ZhuanZhi](https://pic2.zhimg.com/v2-486fa661982257c614058c13a706bb05_r.jpg)
+  矩阵 $A$ 的转置矩阵记为 $A^T$
+  它是将 $A$ 的第 $j$ 行变为第 $j$ 列，第 $k$ 列变为第 $k$ 行所得到的矩阵。
 
 - **矩阵乘法**
   理解：(线性方程组)
-  例题：[数学作业](https://www.luogu.com.cn/problem/P3216)
-
-给定正整数 $n,m$，要求计算 $\text{Concatenate}(n) \bmod \ m$  的值，其中 $\text{Concatenate}(n)$ 是将 $1 \sim n$ 所有正整数 顺序连接起来得到的数。
-
-$1\le n \le 10^{18}$，$1\le m \le 10^9$。
 
 ### 线性方程组的高斯消元法
 
-[开关问题](https://www.acwing.com/problem/content/210/)
+- 线性方程组求解
+- 异或方程组求解
+- 与线性空间的练习
 
-练习：
+## 题目
 
-- [妖梦拼木棒](https://www.luogu.com.cn/problem/P3799)
-- [GCD](https://www.luogu.com.cn/problem/P2568)
-- [Devu and flowers](https://www.luogu.com.cn/problem/CF451E)
-- [矩阵求逆](https://www.luogu.com.cn/problem/P4783)
+[妖梦拼木棒](https://www.luogu.com.cn/problem/P3799)
+Tag：组合数
+注意数据范围，暴力枚举求解。
+
+[GCD](https://www.luogu.com.cn/problem/P2568)
+Tag：欧拉函数
+将数拆分表示，观察到互质性质，利用欧拉函数求解。
+
+[Devu and flowers](https://www.luogu.com.cn/problem/CF451E)
+Tag：容斥原理，组合数
+容斥原理，配上可重集组合数。
+通过状态压缩技巧实现容斥。
+
+[矩阵求逆](https://www.luogu.com.cn/problem/P4783)
+Tag：线性代数
+
+[球迷购票问题](https://www.luogu.com.cn/problem/P1754)
+Tag：卡特兰数
+
+[数学作业](https://www.luogu.com.cn/problem/P3216)
+Tag：高斯消元
+
+[按钮](https://www.luogu.com.cn/problem/P4861)
+Tag：欧拉定理
+
+裴蜀定理判断有无整数解，利用欧拉定理的性质2求解。
+
+[TROKUTI](https://www.luogu.com.cn/problem/P7676)
+Tag：数学性质
+
+斜率不同的三条线必定会构成一个三角形。
+相同斜率归为一类，枚举每一个类，答案每次加上 $cnt[currentK] \times cnt[smallerK] \times cnt[largerK]$

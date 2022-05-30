@@ -6,7 +6,7 @@ categories:
 tags:
   - 数学
 ---
-欧拉函数（Euler's totient function），表示的是小于等于 $n$ 和 $n$ 互质的数的个数。
+欧拉函数（Euler's totient function），表示的是小于等于 n 和 n 互质的数的个数。
 <!-- more -->
 ## 介绍
 

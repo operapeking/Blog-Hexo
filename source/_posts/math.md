@@ -200,7 +200,7 @@ $x_1 + x_2 + x_3 + \dots + x_n = m$
 
 ### 二项式定理
 
-$(x+y)^{n} = \sum_{k=0}^{n}{C_n^{k}\times x^{k} \times y^{n - k}}$
+$(x+y)^n = \sum_{k = 0}^{n}{{C_n^{k}\times x^k} \times y^{n - k}}$
 
 - **证明**：展开使用组合数分析。
 
@@ -310,35 +310,54 @@ void init()
 
 ## 题目
 
-[妖梦拼木棒](https://www.luogu.com.cn/problem/P3799)
+### [妖梦拼木棒](https://www.luogu.com.cn/problem/P3799)
+
 Tag：组合数
 注意数据范围，暴力枚举求解。
 
-[GCD](https://www.luogu.com.cn/problem/P2568)
+### [GCD](https://www.luogu.com.cn/problem/P2568)
+
 Tag：欧拉函数
 将数拆分表示，观察到互质性质，利用欧拉函数求解。
 
-[Devu and flowers](https://www.luogu.com.cn/problem/CF451E)
+### [Devu and flowers](https://www.luogu.com.cn/problem/CF451E)
+
 Tag：容斥原理，组合数
 容斥原理，配上可重集组合数。
 通过状态压缩技巧实现容斥。
 
-[矩阵求逆](https://www.luogu.com.cn/problem/P4783)
+### [矩阵求逆](https://www.luogu.com.cn/problem/P4783)
+
 Tag：线性代数
 
-[球迷购票问题](https://www.luogu.com.cn/problem/P1754)
+### [球迷购票问题](https://www.luogu.com.cn/problem/P1754)
+
 Tag：卡特兰数
 
-[数学作业](https://www.luogu.com.cn/problem/P3216)
-Tag：高斯消元
+### [数学作业](https://www.luogu.com.cn/problem/P3216)
 
-[按钮](https://www.luogu.com.cn/problem/P4861)
+Tag：矩阵乘法
+
+### [按钮](https://www.luogu.com.cn/problem/P4861)
+
 Tag：欧拉定理
 
 裴蜀定理判断有无整数解，利用欧拉定理的性质2求解。
 
-[TROKUTI](https://www.luogu.com.cn/problem/P7676)
+### [TROKUTI](https://www.luogu.com.cn/problem/P7676)
+
 Tag：数学性质
 
 斜率不同的三条线必定会构成一个三角形。
 相同斜率归为一类，枚举每一个类，答案每次加上 $cnt[currentK] \times cnt[smallerK] \times cnt[largerK]$
+
+### [因子和](https://www.luogu.com.cn/problem/P1593)
+
+Tag: 约数和定理
+
+正整数 $x$ 的所有约数的和为：
+ $({p_1}^1+{p_1}^2+\dots+{p_1}^{c_1}) \times ({p_2}^1+{p_2}^2+\dots+{p_2}^{c_2}) \times \dots ({p_k}^1+{p_k}^2+\dots+{p_k}^{c_k})$
+
+最后计算时再用等比数列求和公式即可。
+
+注意特判逆元不存在的情况。

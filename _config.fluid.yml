@@ -470,7 +470,7 @@ index:
   # 头图高度，屏幕百分比
   # Height ratio of banner image
   # Available: 0 - 100
-  banner_img_height: 100
+  banner_img_height: 80
 
   # 头图黑色蒙版的不透明度，available: 0 - 1.0， 1 是完全不透明
   # Opacity of the banner mask, 1.0 is completely opaque
@@ -538,7 +538,7 @@ index:
 #---------------------------
 post:
   banner_img: /img/theme/main.png
-  banner_img_height: 70
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
   # 文章在首页的默认封面图，当没有指定 index_img 时会使用该图片，若两者都为空则不显示任何图片
@@ -875,7 +875,7 @@ cusdis:
 #---------------------------
 archive:
   banner_img: /img/theme/main.png
-  banner_img_height: 60
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
 
@@ -886,7 +886,7 @@ archive:
 category:
   enable: true
   banner_img: /img/theme/main.png
-  banner_img_height: 60
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
   # 分类的排序字段，前面带减号是倒序，不带减号是正序
@@ -932,7 +932,7 @@ tag:
 about:
   enable: true
   banner_img: /img/theme/main.png
-  banner_img_height: 60
+  banner_img_height: 80
   banner_mask_alpha: 0.3
   avatar: /img/avatar.png
   name: "about"
@@ -954,7 +954,7 @@ about:
 #---------------------------
 page:
   banner_img: /img/theme/main.png
-  banner_img_height: 60
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
 
@@ -965,7 +965,7 @@ page:
 page404:
   enable: true
   banner_img: /img/theme/main.png
-  banner_img_height: 85
+  banner_img_height: 80
   banner_mask_alpha: 0.3
   # 重定向到首页的延迟(毫秒)
   # Delay in redirecting to home page (milliseconds)
@@ -979,40 +979,40 @@ page404:
 links:
   enable: true
   banner_img: /img/theme/main.png
-  banner_img_height: 60
+  banner_img_height: 80
   banner_mask_alpha: 0.3
   # 友链的成员项
   # Member item of page
   items:
     - {
-      title: "JKLover",
-      link: "https://jkloverdcoi.github.io/",
-      avatar: "/img/favicon.png"
-    }
-    - {
-      title: "PigAunt",
-      link: "https://www.pigaunt.top/",
-      avatar: "/img/favicon.png"
-    }
-    - {
-      title: "lucky叶",
-      link: "https://luckyleaves.github.io/",
-      avatar: "/img/favicon.png"
-    }
-    - {
-      title: "Dyd本人",
+      title: "Dyd",
       link: "https://dyd-true.github.io/",
-      avatar: "/img/favicon.png"
+      avatar: "https://dyd-true.github.io/images/avatar.jpg"
     }
     - {
-      title: "mydcwfy",
-      link: "https://mydcwfy.github.io/",
-      avatar: "/img/favicon.png"
+      title: "Luckyleaves",
+      link: "https://luckyleaves.github.io/",
+      avatar: "https://luckyleaves.github.io/images/avatar.jpg"
     }
     - {
       title: "Mike",
       link: "https://492732.blog.luogu.org/",
-      avatar: "/img/favicon.png"
+      avatar: "https://cdn.luogu.com.cn/upload/usericon/492732.png"
+    }
+    - {
+      title: "mydcwfy",
+      link: "https://mydcwfy.github.io/",
+      avatar: "https://mydcwfy.github.io/images/avatar.png"
+    }
+    - {
+      title: "PigAunt",
+      link: "https://www.pigaunt.top/",
+      avatar: "https://cdn.luogu.com.cn/upload/usericon/185910.png"
+    }
+    - {
+      title: "JKLover",
+      link: "https://jkloverdcoi.github.io/",
+      avatar: "https://jkloverdcoi.github.io/images/avatar.jpg"
     }
 
   # 当成员头像加载失败时，替换为指定图片

@@ -1,5 +1,5 @@
 ---
-title: 动态规划 Dynamic Programming
+title: 动态规划
 date: 2022-05-29 17:41:00
 categories: 算法
 tags:

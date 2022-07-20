@@ -1,41 +1,39 @@
-name: Hexo deploy
+name: HEXO CI
 
-on: 
+on:
   push:
-    paths-ignore:
-      - 'source/_drafts/**'
-      - '.github/**'
+    branches:
+    - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: A job to deploy blog.
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-      with:
-        submodules: true
-        
-    - name: Cache node modules
-      uses: actions/cache@v1
-      id: cache
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - name: Install Dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: npm ci
-        
-    # Deploy hexo blog website.
-    - name: Deploy
-      id: deploy
-      uses: sma11black/hexo-action@v1.0.3
-      with:
-        deploy_key: ${{ secrets.HEXO_DEPLOY_KEY }}
-        user_name: operapeking
-        user_email: pekingopera@protonmail.com
-        commit_msg: ${{ github.event.head_commit.message }}ion)
-    - name: Get the output
-      run: |
-        echo "${{ steps.deploy.outputs.notify }}"
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Configuration environment
+        env:
+          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name "operapeking"
+          git config --global user.email "pekingopera@protonmail.com"
+      - name: Install dependencies
+        run: |
+          npm i -g hexo-cli
+          npm i
+      - name: Deploy hexo
+        run: |
+          hexo clean && hexo generate && hexo deploy

@@ -7,9 +7,6 @@ tags:
 ---
 Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
 <!-- more -->
-## 介绍
-
-Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
 
 ### 创建仓库
 
@@ -58,11 +55,7 @@ ssh-keygen -t rsa -C "youremail@example.com" # 不要输入 passphrase
 
 在浏览器中登录 GitHub，打开 [添加 SSH keys 页面](https://github.com/settings/keys)
 
-![Github Settings](https://pekingopera.ddns.net:81/i/2022/05/07/62768d8ee5980.png)
-
 点击右上角 `New SSH key` 后，将内容复制到 Key 里（Title 为备注名）
-
-![New SSH key](https://pekingopera.ddns.net:81/i/2022/05/07/62768ef4c9946.png)
 
 为了验证是否成功，输入以下命令：
 
@@ -75,8 +68,6 @@ ssh -T git@github.com
 ### 添加仓库
 
 先在 Github 上 [新建一个仓库](https://github.com/new)，如 `git-test`。
-
-![new repo](https://pekingopera.ddns.net:81/i/2022/05/07/627690e2dcedd.png)
 
 创建完成后就可以添加仓库了。
 

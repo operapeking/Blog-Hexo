@@ -50,7 +50,7 @@ int Gcd(int a, int b) {
 
 当 $b = 0$ 时，$a \times x + b \times 0 = a = \gcd(a, b)$。
 
-当 $b \neq 0$ 时，因为 $\gcd(a, b) = \gcd(a, -b)$，不妨设 $b > 0$。假设存在一对整数 $x, y$，满足 $b \times x + (a \bmod b) \times y = \gcd(b, a \bmod b)$。因为 $b \times x + (a \bmod b) \times y = b \times x + (a - b \times \lfloor a / b \rfloor) \times y = a \times y + b \times (x - y \times \lfloor a / b \rfloor)$，令 $x' = y, y' = x - y \times \lfloor a / b \rfloor$，则有 $a \times x' + b \times y' = \gcd(a, b)$。
+当 $b \neq 0$ 时，因为 $\gcd(a, b) = \gcd(a, -b)$，不妨设 $b > 0$。假设存在一对整数 $x, y$，满足 $b \times x + (a \bmod b) \times y = \gcd(b, a \bmod b)$。因为 $b \times x + (a \bmod b) \times y = b \times x + (a - b \times \lfloor \frac{a}{b} \rfloor) \times y = a \times y + b \times (x - y \times \lfloor \frac{a}{b} \rfloor)$，令 $x' = y, y' = x - y \times \lfloor \frac{a}{b} \rfloor$，则有 $a \times x' + b \times y' = \gcd(a, b)$。
 
 ### 推论
 
@@ -65,7 +65,7 @@ int Gcd(int a, int b) {
 $$
 \begin{cases}
   x'= y \newline
-  y'= x - y \times \lfloor a / b \rfloor
+  y'= x - y \times \lfloor \frac{a}{b} \rfloor
 \end{cases}
 $$
 

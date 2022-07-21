@@ -1,8 +1,7 @@
 ---
 title: 单调队列
 date: 2021-10-02 15:47:49
-categories:
-  - 算法
+categories: 算法
 tags:
   - 数据结构
   - 队列

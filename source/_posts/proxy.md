@@ -1,8 +1,7 @@
 ---
 title: 为 git、npm、yarn 设置代理
 date: 2022-05-24 22:56:32
-categories:
-  - 技术
+categories: 技术
 tags:
   - git
   - nodejs

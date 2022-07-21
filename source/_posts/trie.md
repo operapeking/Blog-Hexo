@@ -1,8 +1,7 @@
 ---
 title: 字典树
 date: 2021-05-23 16:13:10
-categories:
-  - 算法
+categories: 算法
 tags:
   - 字符串
   - 字典树

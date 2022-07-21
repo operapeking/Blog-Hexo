@@ -1,8 +1,7 @@
 ---
 title: STL 模板类
 date: 2022-06-05 23:25:40
-categories:
-  - 算法
+categories: 算法
 tags:
   - STL
 ---

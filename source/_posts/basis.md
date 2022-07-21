@@ -1,8 +1,7 @@
 ---
 title: 线性基
 date: 2021-10-01 15:45:31
-categories:
-  - 算法
+categories: 算法
 tags:
   - 数学
   - 线性基

@@ -1,8 +1,7 @@
 ---
 title: 最小生成树
 date: 2021-10-04 15:58:08
-categories:
-  - 算法
+categories: 算法
 tags:
   - 数据结构
   - 最小生成树

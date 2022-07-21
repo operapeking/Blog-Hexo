@@ -51,9 +51,7 @@ void Insert(long long x)
 
 将线性基从高位向低位扫，若 `ans` 异或上当前扫到的 `p[i]` 答案变大，就把答案异或上 `p[i]`。
 
-{% note success %}
 为什么能行呢？因为从高往低位扫，若当前扫到第 i 位，意味着可以保证答案的第 `i` 位为 `1`，且后面没有机会改变这一位。
-{% endnote %}
 
 ### [【模板】线性基](https://www.luogu.com.cn/problem/P3812)
 

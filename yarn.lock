@@ -616,12 +616,12 @@ hexo-deployer-git@^3.0.0:
     moment "^2.18.0"
     nunjucks "^3.2.1"
 
-hexo-filter-mathjax@^0.8.1:
-  version "0.8.1"
-  resolved "https://registry.npmmirror.com/hexo-filter-mathjax/-/hexo-filter-mathjax-0.8.1.tgz#4f9ca824b08c944cc7de0505997a4eb91d936d94"
-  integrity sha512-r2yJ0kck/RUeZsQk4Ilmx6CDTjsGK0vAjYG86A266Y2f3I2z2qLEWZTc8voNgJar85ca3JF2+2TXs3j1asewTw==
+hexo-filter-mathjax@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/hexo-filter-mathjax/-/hexo-filter-mathjax-0.9.0.tgz#d2d873fb51b6257f896009c9c5c69e5cba1e4617"
+  integrity sha512-tTeaRLQjE60m4dSHA+SCXHYsTcqN6bGGxA+3Zzw6GHMBweIZNKXOS0ctUq32PuwejFlLKUSAeQdhhvTBOrgKMA==
   dependencies:
-    mathjax-full "3.2.1"
+    mathjax-full "3.2.2"
 
 hexo-front-matter@^3.0.0:
   version "3.0.0"
@@ -1002,10 +1002,10 @@ marked@^4.0.1:
   resolved "https://registry.npmmirror.com/marked/-/marked-4.0.18.tgz#cd0ac54b2e5610cfb90e8fd46ccaa8292c9ed569"
   integrity sha512-wbLDJ7Zh0sqA0Vdg6aqlbT+yPxqLblpAZh1mK2+AO2twQkPywvvqQNfEPVwSSRjZ7dZcdeVBIAgiO7MMp3Dszw==
 
-mathjax-full@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.npmmirror.com/mathjax-full/-/mathjax-full-3.2.1.tgz#5ee2f39cde11a74c1e6685fb3568a0b9c7a8a992"
-  integrity sha512-aUz9o16MGZdeiIBwZjAfUBTiJb7LRqzZEl1YOZ8zQMGYIyh1/nxRebxKxjDe9L+xcZCr2OHdzoFBMcd6VnLv9Q==
+mathjax-full@3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/mathjax-full/-/mathjax-full-3.2.2.tgz#43f02e55219db393030985d2b6537ceae82f1fa7"
+  integrity sha512-+LfG9Fik+OuI8SLwsiR02IVdjcnRCy5MufYLi0C3TdMT56L/pjB0alMVGgoWJF8pN9Rc7FESycZB9BMNWIid5w==
   dependencies:
     esm "^3.2.25"
     mhchemparser "^4.1.0"
